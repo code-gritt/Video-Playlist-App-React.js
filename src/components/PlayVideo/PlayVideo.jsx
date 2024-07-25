@@ -44,7 +44,7 @@ const PlayVideo = ({ videoId }) => {
           <div>
             <span>
               <img src={like} alt="" />
-              125
+              {apiData ? value_converter(apiData.statistics.likeCount) : 155}
             </span>
             <span>
               <img src={dislike} alt="" />2
@@ -69,10 +69,17 @@ const PlayVideo = ({ videoId }) => {
           <button>Subscribe</button>
         </div>
         <div className="vid-description">
-          <p>Channel that makes learning easy</p>
+          <p>
+            {apiData
+              ? apiData.snippet.description.slice(0, 250)
+              : "Description Here"}
+          </p>
           <p>Subscribe Greatstack to watch more tutorials on web development</p>
           <hr />
-          <h4>130 Comments</h4>
+          <h4>
+            {apiData ? value_converter(apiData.statistics.commentCount) : 102}{" "}
+            Comments
+          </h4>
           <div className="comment">
             <img src={user_profile} alt="" />
             <div>
